@@ -28,6 +28,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'dni',
+        'phone'
     ];
 
     /**
@@ -62,4 +64,8 @@ class User extends Authenticatable
     public function commerces(){
         return $this->hasMany(Commerce::class);
     }
+    public function setPasswordAttribute($value){
+        $this->attributes['password'] = bcrypt($value);
+    }
 }
+
