@@ -9,6 +9,15 @@ class Category extends Model
 {
     use HasFactory;
 
+
+    protected $fillable = ['name', 'slug'];
+
+    public function getRouteKey()
+    {
+        return "slug";
+    }
+
+
     public function products(){
         return $this->belongsToMany(Products::class);
     }

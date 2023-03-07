@@ -22,6 +22,9 @@ class DatabaseSeeder extends Seeder
         Storage::deleteDirectory('public/images');
         Storage::makeDirectory('public/images');
 
+        $this->call(RoleSeeder::class);
+
+
         $this->call(UserSeeder::class);
         Category::factory(4)->create();
         Commerce::factory(10)->create()->unique();
