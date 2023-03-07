@@ -24,10 +24,18 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+
+        $randomLetter = $this->faker->randomLetter();
+        $randomNum = $this->faker->randomNumber(7, true);
+
+        $dniRandom = $randomLetter . $randomNum;
         return [
             'name' => $this->faker->name(),
+            'dni' => $dniRandom,
+            'phone' => $this->faker->randomNumber(9,true),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
+            'position' => $this->faker->word(20),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'two_factor_secret' => null,
             'two_factor_recovery_codes' => null,
