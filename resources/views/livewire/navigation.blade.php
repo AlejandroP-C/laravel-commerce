@@ -2,34 +2,21 @@
 
     <div class="humberger__menu__overlay"></div>
 
-    {{-- Desktop --}}
+    {{-- Mobile --}}
     <div class="humberger__menu__wrapper">
 
         <div class="humberger__menu__logo">
-            <a href="#" class="logo">V-Shop</a>
+            <a href="/" class="logo">V-Shop</a>
         </div>
 
         <div class="humberger__menu__cart">
             <ul>
-                {{-- <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li> --}}
                 <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
             </ul>
             <div class="header__cart__price">item: <span>$150.00</span></div>
         </div>
 
         <div class="humberger__menu__widget">
-
-            {{-- <div class="header__top__right__language">
-
-                <img src="{{ asset('/images/language.png') }}" alt="" />
-                <div>English</div>
-                <span class="arrow_carrot-down"></span>
-                <ul>
-                    <li><a href="#">Spanis</a></li>
-                    <li><a href="#">English</a></li>
-                </ul>
-            </div> --}}
-
             <div class="header__top__right__auth">
                 <a href="#"> Login</a>
                 <a href="#"> Register</a>
@@ -39,8 +26,8 @@
 
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">Shop</a></li>
+                <li class="active"><a href="/">Home</a></li>
+                {{-- <li><a href="#">Shop</a></li>
                 <li><a href="#">Pages</a>
                     <ul class="header__menu__dropdown">
                         <li><a href="#">Shop Details</a></li>
@@ -49,7 +36,7 @@
                         <li><a href="#">Blog Details</a></li>
                     </ul>
                 </li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#">Contact</a></li> --}}
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -60,7 +47,7 @@
         </div>
     </div>
 
-    {{-- Mobile --}}
+    {{-- Desktop --}}
     <header class="header">
         <div class="header__top">
             <div class="container">
@@ -74,15 +61,6 @@
                     </div>
                     <div class="col-lg-6 col-md-6">
                         <div class="header__top__right">
-                            {{-- <div class="header__top__right__language">
-                                <img src="{{ asset('/images/language.png') }}" alt="" />
-                                <div>English</div>
-                                <span class="arrow_carrot-down"></span>
-                                <ul>
-                                    <li><a href="#">Spanis</a></li>
-                                    <li><a href="#">English</a></li>
-                                </ul>
-                            </div> --}}
                             <div class="header__top__right__auth">
                                 <a href="#"> Login</a>
                                 <a href="#"> Register</a>
@@ -97,14 +75,14 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
-                        <a href="#" class="logo">V-Shop</a>
+                        <a href="/" class="logo">V-Shop</a>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="#">Home</a></li>
-                            <li><a href="#">Shop</a></li>
+                            <li class="active"><a href="/">Home</a></li>
+                            {{-- <li><a href="#">Shop</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="header__menu__dropdown">
                                     <li><a href="#">Shop Details</a></li>
@@ -113,14 +91,13 @@
                                     <li><a href="#">Blog Details</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Contact</a></li> --}}
                         </ul>
                     </nav>
                 </div>
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
-                            {{-- <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li> --}}
                             <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
                         </ul>
                         <div class="header__cart__price">item: <span>$150.00</span></div>
@@ -136,31 +113,33 @@
 
 </div>
 
-<section class="hero">
-
+<section>
     <div class="container">
-
         <div class="row">
-
-            <div class="col-lg-3"></div>
-
-            <div class="col-lg-9">
+            <div class="col-lg-3">
+                <div class="hero__categories">
+                    <div class="hero__categories__all">
+                        <i class="fa fa-bars"></i>
+                        <span>Categorías</span>
+                    </div>
+                    <ul style="display: none">
+                        @foreach ($categories as $category)
+                            <li><a href="#">{{ $category->name }}</a></li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-9 ml-">
                 <div class="hero__search">
                     <div class="hero__search__form">
                         <form action="#">
-                            <div class="hero__search__categories">
-                                All Categories
-                                <span class="arrow_carrot-down"></span>
-                            </div>
+                            <div class="hero__search__categories">Todas las categorías</div>
                             <input type="text" placeholder="What do yo u need?" />
-                            <button type="submit" class="site-btn">SEARCH</button>
+                            <button type="submit" class="site-btn">Buscar</button>
                         </form>
                     </div>
                 </div>
             </div>
-
         </div>
-
     </div>
-
 </section>
