@@ -379,6 +379,11 @@ ol {
 	display: inline-block;
 }
 
+.header__logo a:hover {
+	text-decoration: none;
+	color: #000;
+}
+
 .header__menu {
 	padding: 24px 0;
 }
@@ -569,16 +574,6 @@ ol {
 	color: #ffffff;
 }
 
-.hero__categories__all:after {
-	position: absolute;
-	right: 18px;
-	top: 9px;
-	content: "3";
-	font-family: "ElegantIcons";
-	font-size: 18px;
-	color: #ffffff;
-}
-
 .hero__categories ul {
 	border: 1px solid #ebebeb;
 	padding-left: 40px;
@@ -603,7 +598,7 @@ ol {
 }
 
 .hero__search__form {
-	width: 610px;
+	width: 680px;
 	height: 50px;
 	border: 1px solid #ebebeb;
 	position: relative;
@@ -2879,7 +2874,7 @@ ol {
 		margin-right: 45px;
 	}
 	.hero__search__form {
-		width: 490px;
+		width: 100%;
 	}
 	.hero__categories__all {
 		padding: 10px 25px 10px 20px;
@@ -2908,7 +2903,7 @@ ol {
 		margin-bottom: 30px;
 	}
 	.hero__search__form {
-		width: 485px;
+		width: 100%;
 	}
 	.categories__slider.owl-carousel .owl-nav button {
 		left: -20px;
@@ -2944,7 +2939,6 @@ ol {
 		width: 35px;
 		line-height: 33px;
 		text-align: center;
-		border: 1px solid #1c1c1c;
 		cursor: pointer;
 		position: absolute;
 		right: 15px;
@@ -3198,7 +3192,6 @@ ol {
 		width: 35px;
 		line-height: 33px;
 		text-align: center;
-		border: 1px solid #1c1c1c;
 		cursor: pointer;
 		position: absolute;
 		right: 15px;
