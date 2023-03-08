@@ -5,9 +5,7 @@
         </x-slot>
 
         <x-validation-errors class="mb-4" />
-        <div class="mt-2 mb-4 text-center text-lg font-bold">
-            <h1>Register</h1>
-        </div>
+
         <form method="POST" action="{{ route('register') }}">
             @csrf
 

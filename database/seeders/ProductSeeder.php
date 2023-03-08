@@ -14,7 +14,7 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
-        $products = Products::factory(25)->create();
+        $products = Products::factory(100)->create();
         
         foreach ($products as $product) {
             Image::factory(1)->create([
@@ -23,11 +23,15 @@ class ProductSeeder extends Seeder
             ]);
            
             $product->categories()->attach([
-                rand(1,4)
+                rand(1,2),
+                rand(3,4)
             ]);
 
             $product->commerces()->attach([
-                rand(1,10)
+                rand(1,2),
+                rand(3,4),
+                rand(5,6),
+                rand(7,10)
             ]);
             }
     }

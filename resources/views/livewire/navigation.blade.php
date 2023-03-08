@@ -135,7 +135,7 @@
                             @else
                                 <div class="header__top__right__auth">
                                     <a href="{{ route('login') }}"> Login</a>
-                                    <a href="{{ route('register') }}"> Register</a>
+                                    <a href="/register"> Register</a>
                                 </div>
                             @endauth
 

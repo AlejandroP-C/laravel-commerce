@@ -18,9 +18,11 @@ class CommerceFactory extends Factory
     public function definition(): array
     {
 
+        $license = $this->faker->randomNumber(8, true) . $this->faker->randomLetter();
         $name = $this->faker->unique()->sentence();
         return [
             'name' => $name,
+            'license' => $license,
             'slug' => Str::slug($name),
             'description' => $this->faker->text(144),
             'location' => $this->faker->unique()->word(30),

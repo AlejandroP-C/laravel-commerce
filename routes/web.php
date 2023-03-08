@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,7 +24,9 @@ Route::get('/register', function () {
     return view('auth.register');
 });
 
-Route::post('/register',[RegisterController::class, 'register'])->name('register');;
+Route::post('/',[RegisterController::class, 'register'])->name('register');;
+
+
 
 
 Route::middleware([
@@ -32,6 +35,8 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return view('welcome');
     })->name('dashboard');
 });
+
+
