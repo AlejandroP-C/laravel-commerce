@@ -1,13 +1,5 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
-
-@section('content_header')
-    <h1>Crear nueva categoría</h1>
-@stop
-
-@extends('adminlte::page')
-
 @section('title', 'Coders Free')
 
 @section('content_header')

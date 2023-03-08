@@ -5,7 +5,7 @@
 @section('content_header')
     
     <a class="btn btn-secondary btn-sm float-right " href="{{route('admin.categories.create')}}">Agregar Categoria</a>
-   
+    
     <h1>Lista de Categorias:</h1>
 @stop
 
@@ -41,10 +41,10 @@
                            <td width="10px">
                         
                             <a class="btn btn-primary btn-sm" href="{{route('admin.categories.edit', $category)}}">Editar</a>
-                         
+                            
                            </td>
                            <td width="10px">
-
+                       
                            <form action="{{route('admin.categories.destroy', $category)}}" method="POST">
                            
                             @csrf

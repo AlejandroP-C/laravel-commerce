@@ -28,7 +28,7 @@ class UserFactory extends Factory
         $randomLetter = $this->faker->randomLetter();
         $randomNum = $this->faker->randomNumber(7, true);
 
-        $dniRandom = $randomLetter . $randomNum;
+        $dniRandom =  $randomNum . $randomLetter;
         return [
             'name' => $this->faker->name(),
             'dni' => $dniRandom,
