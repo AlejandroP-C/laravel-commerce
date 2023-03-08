@@ -48,12 +48,14 @@
 </div>
 
 <div class="form-group">
-{!! Form::label('category_id','Categoria') !!}
-{!! Form::select('category_id', $categories, null, ['class' => 'form-control']) !!}
+@foreach ($categories as $category)
 
-@error('category_id')
-    <small class="text-danger">{{$message}}</small>
-@enderror
+<label class="mr-2"> 
+        {!! Form::checkbox('categories[]', $category->id, null) !!}
+        {{$category->name}}
+</label>
+    
+@endforeach
 </div>
 
 

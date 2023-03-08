@@ -25,7 +25,7 @@ class CommerceController extends Controller
     public function create()
     {
 
-        $categories = Category::pluck('name','id');
+        $categories = Category::all();
 
         return view('admin.commerces.create', compact('categories'));
     }
@@ -33,11 +33,15 @@ class CommerceController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store( CommerceRequest $request)
+    public function store(CommerceRequest $request)
     {
-      $commerce = Commerce::create($request->all());
+        $commerce = Commerce::create($request->all());
 
-      return redirect()->route('admin.commerces.edit', $commerce);
+        if ($request->categories) {
+            $commerce->categories()->attach($request->categories);
+        }
+
+        return redirect()->route('admin.commerces.edit', $commerce);
     }
 
     /**
@@ -53,8 +57,9 @@ class CommerceController extends Controller
      */
     public function edit(Commerce $commerce)
     {
-        $categories = Category::pluck('name','id');
-        return view('admin.commerces.edit', compact('commerce','categories'));
+        $categories = Category::all();
+
+        return view('admin.commerces.edit', compact('commerce', 'categories'));
     }
 
     /**
@@ -64,9 +69,11 @@ class CommerceController extends Controller
     {
         $commerce->update($request->all());
 
-        return redirect()->route('admin.commerces.edit', $commerce)->with('info', 'El comercio se actualizó con éxito');
+        if ($request->categories) {
+            $commerce->categories()->sync($request->categories);
+        }
 
-       
+        return redirect()->route('admin.commerces.edit', $commerce)->with('info', 'El comercio se actualizó con éxito');
     }
 
     /**
