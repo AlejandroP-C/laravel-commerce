@@ -379,6 +379,11 @@ ol {
 	display: inline-block;
 }
 
+.header__logo a:hover {
+	text-decoration: none;
+	color: #000;
+}
+
 .header__menu {
 	padding: 24px 0;
 }

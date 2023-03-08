@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CommerceController;
+use App\Models\Commerce;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,8 +16,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $commerces = Commerce::all();
+    return view('welcome', ['commerces' => $commerces]);
 });
+
+Route::get('/category/{category}', [CommerceController::class, 'category'])->name('commerces.category');
 
 Route::middleware([
     'auth:sanctum',

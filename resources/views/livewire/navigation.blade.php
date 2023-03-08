@@ -124,7 +124,7 @@
                     </div>
                     <ul style="display: none">
                         @foreach ($categories as $category)
-                            <li><a href="#">{{ $category->name }}</a></li>
+                            <li><a href="{{route('commerces.category', $category)}}">{{ $category->name }}</a></li>
                         @endforeach
                     </ul>
                 </div>
@@ -133,8 +133,8 @@
                 <div class="hero__search">
                     <div class="hero__search__form">
                         <form action="#">
-                            <div class="hero__search__categories">Todas las categorías</div>
-                            <input type="text" placeholder="What do yo u need?" />
+                            <div class="hero__search__categories">Buscar por nombre</div>
+                            <input type="text" />
                             <button type="submit" class="site-btn">Buscar</button>
                         </form>
                     </div>
