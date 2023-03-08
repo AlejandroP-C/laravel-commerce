@@ -129,17 +129,6 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-lg-9 ml-">
-                <div class="hero__search">
-                    <div class="hero__search__form">
-                        <form action="#">
-                            <div class="hero__search__categories">Buscar por nombre</div>
-                            <input type="text" />
-                            <button type="submit" class="site-btn">Buscar</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </section>
