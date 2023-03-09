@@ -18,7 +18,7 @@ class Commerce extends Model
     }
 
     public function products(){
-        return $this->belongsToMany(Products::class);
+        return $this->belongsToMany(Products::class, 'commerce_products');
     }
 
     public function categories(){

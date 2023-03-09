@@ -110,11 +110,10 @@
                                                 class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
                                                 id="user-menu-item-0">Tu perfil</a>
 
-                                            @can('admin.home')
-                                                <a href="{{ route('admin.home') }}"
+                                                <a href="/admin"
                                                     class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
-                                                    id="user-menu-item-0">Dashboard</a>
-                                            @endcan
+                                                    id="user-menu-item-0">Commerce Management</a>
+                                        
 
 
                                             <form method="POST" action="{{ route('logout') }}">
