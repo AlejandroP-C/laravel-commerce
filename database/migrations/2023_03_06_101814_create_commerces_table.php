@@ -20,10 +20,11 @@ return new class extends Migration
             
             $table->string('location');
             
-            
-            
-            $table->enum('status', [1,2])->default(1);
-            
+        
+            $table->enum('validate', [1,2])->default(1);
+        
+            $table->boolean('status')->default(false);
+
             $table->unsignedBigInteger('user_id');
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

@@ -26,7 +26,8 @@ class CommerceFactory extends Factory
             'slug' => Str::slug($name),
             'description' => $this->faker->text(144),
             'location' => $this->faker->unique()->word(30),
-            'status' => $this->faker->randomElement([1, 2]),
+            'validate' => $this->faker->randomElement([1, 2]),
+            'status' => $this->faker->boolean(),
             'user_id' => User::all()->random()->id,
         ];
     }

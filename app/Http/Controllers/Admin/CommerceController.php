@@ -72,6 +72,7 @@ class CommerceController extends Controller
         if ($request->categories) {
             $commerce->categories()->sync($request->categories);
         }
+        
 
         return redirect()->route('admin.commerces.edit', $commerce)->with('info', 'El comercio se actualizó con éxito');
     }

@@ -32,7 +32,7 @@ class CommerceRequest extends FormRequest
             'license' => 'required',
             'location' => 'required',
             'description' => 'required',
-            'status' => 'required|in:1,2',
+            'validate' => 'required|in:1,2',
             'file' => 'image'
         ];
 
@@ -42,7 +42,8 @@ class CommerceRequest extends FormRequest
 
         if($this->status == 2){
             $rules = array_merge($rules,[
-                'categories' => 'required'
+                'categories' => 'required',
+                'status' => 'required'
             ]);
         }
         return $rules;

@@ -26,6 +26,9 @@
             </thead>
 
             <tbody>
+                @can('admin.commerces.index')
+                    
+               
                 @foreach ($commerces as $commerce)
                     <tr>
                         <td>{{$commerce->id}}</td>
@@ -43,6 +46,27 @@
                         </td>
                     </tr>
                 @endforeach
+                @else 
+            
+                    <tr>
+                        <td>{{$commerces2->id}}</td>
+                        <td>{{$commerces2->name}}</td>
+                        <td with="10px">
+                            <a class="btn btn-primary btn-sm" href="{{route('admin.commerces.edit', $commerces2)}}">Editar</a>
+                        </td>
+                        <td with="10px">
+                            <form action="{{route('admin.commerces.destroy', $commerces2)}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+
+                                <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+               
+                @endcan
+
+
 
             </tbody>
 

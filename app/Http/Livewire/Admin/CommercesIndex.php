@@ -28,7 +28,9 @@ class CommercesIndex extends Component
         $commerces = Commerce::where('name', 'LIKE', '%' . $this->search . '%')
                             ->latest('id')
                             ->paginate();
+        $commerces2 = Commerce::find(auth()->user()->id);
 
-        return view('livewire.admin.commerces-index', compact('commerces'));
+        return view('livewire.admin.commerces-index', compact('commerces', 'commerces2'));
     }
+    
 }

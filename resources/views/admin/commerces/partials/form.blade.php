@@ -62,23 +62,29 @@
 
 @can('admin.commerces.edit')
 <div class="form-group">
-    <p class="font-weight-bold">Estado</p>
+    <p class="font-weight-bold">Validar</p>
 
     <label>
-        {!! Form::radio('status', 1, true) !!}
-        Borrador
+        {!! Form::radio('validate', 1) !!}
+        No Apto
     </label>
     <label>
-        {!! Form::radio('status', 2) !!}
-        Publicado
+        {!! Form::radio('validate', 2) !!}
+        Apto
     </label>
     
     @else
     {!! Form::hidden('status', 1) !!}    
-    @endcan
 
-
-
+    @if ('validate' == 2)
+    <p class="font-weight-bold">Mostrar a usuarios</p>
+    <label>
+        {!! Form::checkbox('status', 1) !!}
+        Publicar
+    </label>    
+    @endif
+    
+    @endcan 
  
 
 <div class="row mb-3">

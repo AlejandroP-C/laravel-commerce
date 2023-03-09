@@ -20,8 +20,17 @@ class UserSeeder extends Seeder
             'email' => 'juancruzortiz@gmail.com',
             'position' => 'Gerente',
             'password' => bcrypt('juanjuan')
+        ])->assignRole('AdministracionComercios');
+
+        User::create([
+            'name' => 'Ian Garcia Ordoñez',
+            'dni' => '20880621w',
+            'phone' => 652418766,
+            'email' => 'iangarcia@gmail.com',
+            'position' => 'Gerente',
+            'password' => bcrypt('ianian')
         ])->assignRole('SuperAdministracionPortal');
         
-        User::factory(9)->create();
+        User::factory(8)->create();
     }
 }

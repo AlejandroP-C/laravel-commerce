@@ -322,13 +322,14 @@ return [
             'can'  => 'admin.categories.index',
         ],
         
+        
       
         ['header' => 'COMERCIOS'],
         [
             'text' => 'Lista de comercios',
             'route'  => 'admin.commerces.index',
             'icon' => 'fas fa-fw fa-clipboard',
-            'can'  => 'admin.commerces.index',
+           
         ],
         [
             'text' => 'Crear un nuevo comercio',
@@ -336,6 +337,8 @@ return [
             'icon' => 'fas fa-fw fa-file',
             'can'  => 'admin.commerces.create',
         ],
+    
+       
     ],
 
     /*
