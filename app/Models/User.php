@@ -11,7 +11,6 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Commerce;
 use Illuminate\Support\Facades\Hash;
-use App\Models\Commerce;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
