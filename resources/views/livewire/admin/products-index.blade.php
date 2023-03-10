@@ -1,7 +1,7 @@
 <div class="card">
     <div class="card-header">
 
-        <input type="text" wire:model="search" class="form-control" placeholder="Ingrese el nombre de la empresa...">
+        <input type="text" wire:model="search" class="form-control" placeholder="Ingrese el nombre de tu comercio...">
 
     </div>
     @if ($commerces->count())
@@ -10,14 +10,14 @@
             {{ $commerces->links() }}
 
             @foreach ($commerces as $commerce)
-                <div class="mb-3">
+                <div class="mb-3 form-group">
                     <h3 class="text-center"><strong>{{ $commerce->name }}</strong></h3>
 
                 </div>
                 <table class="table table-striped">
                     <thead>
 
-                        <tr>
+                        <tr class="bg-dark">
                             <th>ID</th>
                             <th>Nombre</th>
                             <th>Descripción</th>

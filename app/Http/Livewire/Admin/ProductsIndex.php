@@ -34,8 +34,6 @@ class ProductsIndex extends Component
          */
         $commerces = Commerce::where('user_id', auth()->user()->id)->where('name','LIKE','%' . $this->search .'%')->paginate(1);
 
-
-
         return view('livewire.admin.products-index', compact('commerces'));
     }
 }
