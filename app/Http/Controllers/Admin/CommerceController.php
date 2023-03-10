@@ -49,7 +49,7 @@ class CommerceController extends Controller
             $commerce->categories()->sync($request->categories);;
         }
 
-        return redirect()->route('admin.commerces.edit', $commerce);
+        return redirect()->route('admin.commerces.edit', $commerce)->with('info', 'El comercio se creó con éxito');;
     }
 
     /**
@@ -65,9 +65,10 @@ class CommerceController extends Controller
      */
     public function edit(Commerce $commerce)
     {
+        
         $categories = Category::all();
 
-        return view('admin.commerces.edit', compact('commerce', 'categories'))->with('info', 'El comercio se creó con éxito');;
+        return view('admin.commerces.edit', compact('commerce', 'categories'))->with('info', 'El comercio se actualizó con éxito');
     }
 
     /**

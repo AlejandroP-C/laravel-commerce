@@ -73,15 +73,12 @@
         <p class="font-weight-bold">Validar</p>
 
         <label>
-            {!! Form::radio('validate', 1) !!}
-            No Apto
-        </label>
-        <label>
-            {!! Form::radio('validate', 2) !!}
+            {!! Form::checkbox('validate', 2) !!}
             Apto
         </label>
+        
     @else
-        {!! Form::hidden('validate', 1) !!}
+        
 
         @if ('validate' == 2)
             <p class="font-weight-bold">Mostrar a usuarios</p>
@@ -90,7 +87,7 @@
                 Publicar
             </label>
         @endif
-
+        {!! Form::hidden('validate', 1) !!}
     @endcan
 
 
