@@ -15,12 +15,22 @@ class UserSeeder extends Seeder
     {
         User::create([
             'name' => 'Juan Cruz Ortiz',
-            'dni' => 'y8542058',
+            'dni' => '8542058y',
             'phone' => 641510110,
             'email' => 'juancruzortiz@gmail.com',
             'position' => 'Gerente',
             'password' => bcrypt('juanjuan')
-        ]);
-        User::factory(9)->create();
+        ])->assignRole('AdministracionComercios');
+
+        User::create([
+            'name' => 'Ian Garcia Ordoñez',
+            'dni' => '20880621w',
+            'phone' => 652418766,
+            'email' => 'iangarcia@gmail.com',
+            'position' => 'Gerente',
+            'password' => bcrypt('ianian')
+        ])->assignRole('SuperAdministracionPortal');
+        
+        User::factory(8)->create();
     }
 }
