@@ -26,8 +26,8 @@
 
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
-                <li class="active"><a href="/">Home</a></li>
-                {{-- <li><a href="#">Shop</a></li>
+                {{-- <li class="active"><a href="/">Home</a></li>
+                <li><a href="#">Shop</a></li>
                 <li><a href="#">Pages</a>
                     <ul class="header__menu__dropdown">
                         <li><a href="#">Shop Details</a></li>
@@ -97,10 +97,11 @@
                                                 class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
                                                 id="user-menu-item-0">Tu perfil</a>
 
+                                                @can('admin.home')
                                                 <a href="/admin"
                                                     class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
                                                     id="user-menu-item-0">Commerce Management</a>
-                                        
+                                                  @endcan
 
 
                                             <form method="POST" action="{{ route('logout') }}">
@@ -141,8 +142,8 @@
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="/">Home</a></li>
-                            {{-- <li><a href="#">Shop</a></li>
+                            {{-- <li class="active"><a href="/">Home</a></li>
+                            <li><a href="#">Shop</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="header__menu__dropdown">
                                     <li><a href="#">Shop Details</a></li>

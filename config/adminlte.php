@@ -332,6 +332,12 @@ return [
            
         ],
         [
+            'text'        => 'Lista de Productos',
+            'route'         => 'admin.products.index',
+            'icon'        => 'far fa-fw fa-clipboard',
+            'label_color' => 'success',
+        ],
+        [
             'text' => 'Crear un nuevo comercio',
             'route'  => 'admin.commerces.create',
             'icon' => 'fas fa-fw fa-file',
