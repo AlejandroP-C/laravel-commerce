@@ -12,4 +12,16 @@ class ProductController extends Controller
         return view('products.detail', compact('product'));
     }
 
+    public function update(Request $request, Products $product)
+    {
+
+        $product->update($request->all());
+
+        $product->update(['votes_valoration' => $product->votes_valoration + $request->input('rating')]);
+        $product->update(['total_votes' => $product->total_votes + 1]);
+
+        return redirect()->route('products.detail', $product);
+
+    }
+
 }

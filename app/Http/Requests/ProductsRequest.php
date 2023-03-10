@@ -23,6 +23,8 @@ class ProductsRequest extends FormRequest
     {
         $product =  $this->route()->parameter('product');
 
+        // dd($product);
+
         $rules = [
             'title' => 'required',
             'categories' => 'required',

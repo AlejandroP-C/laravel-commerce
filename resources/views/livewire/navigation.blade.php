@@ -25,19 +25,7 @@
         </div>
 
         <nav class="humberger__menu__nav mobile-menu">
-            <ul>
-                {{-- <li class="active"><a href="/">Home</a></li>
-                <li><a href="#">Shop</a></li>
-                <li><a href="#">Pages</a>
-                    <ul class="header__menu__dropdown">
-                        <li><a href="#">Shop Details</a></li>
-                        <li><a href="#">Shoping Cart</a></li>
-                        <li><a href="#">Check Out</a></li>
-                        <li><a href="#">Blog Details</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Contact</a></li> --}}
-            </ul>
+            <ul></ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
 
@@ -58,12 +46,9 @@
                         @endif
                     </div>
                     <div class="col-lg-6 col-md-6">
-                        <div class="header__top__right">
+                        <div class="header__top__right" style="float: right">
                             @auth
-                                <div
-                                    class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-
-
+                                <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
 
                                     <!-- Profile dropdown -->
                                     <div class="relative ml-3" x-data="{ open: false }">
@@ -78,21 +63,11 @@
                                             </button>
                                         </div>
 
-                                        <!--
-                                                  Dropdown menu, show/hide based on menu state.
-                                      
-                                                  Entering: "transition ease-out duration-100"
-                                                    From: "transform opacity-0 scale-95"
-                                                    To: "transform opacity-100 scale-100"
-                                                  Leaving: "transition ease-in duration-75"
-                                                    From: "transform opacity-100 scale-100"
-                                                    To: "transform opacity-0 scale-95"
-                                                -->
                                         <div x-show="open" x-on:click.away="open = false"
                                             class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                                             role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button"
                                             tabindex="-1">
-                                            <!-- Active: "bg-gray-100", Not Active: "" -->
+
                                             <a href="{{ route('profile.show') }}"
                                                 class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
                                                 id="user-menu-item-0">Tu perfil</a>
@@ -141,28 +116,16 @@
                 </div>
                 <div class="col-lg-6">
                     <nav class="header__menu">
-                        <ul>
-                            {{-- <li class="active"><a href="/">Home</a></li>
-                            <li><a href="#">Shop</a></li>
-                            <li><a href="#">Pages</a>
-                                <ul class="header__menu__dropdown">
-                                    <li><a href="#">Shop Details</a></li>
-                                    <li><a href="#">Shoping Cart</a></li>
-                                    <li><a href="#">Check Out</a></li>
-                                    <li><a href="#">Blog Details</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Contact</a></li> --}}
-                        </ul>
+                        <ul></ul>
                     </nav>
                 </div>
                 <div class="col-lg-3">
-                    <div class="header__cart">
+                    {{-- <div class="header__cart">
                         <ul>
                             <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
                         </ul>
                         <div class="header__cart__price">item: <span>$150.00</span></div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <div class="humberger__open">
@@ -178,30 +141,18 @@
     <div class="container">
         <div class="row">
 
-            <div class="col-lg-3"></div>
-
-            <div class="col-lg-9">
+            <div class="col-lg-3">
                 <div class="form">
-                    <div class="select">
-                        <form action="#">
-                            <div class="hero__search__categories">
-                                <select name="categories" id="categories" class="custom-select mb-2">
-                                    <option value="" selected>Categoria...</option>
-                                    @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <input type="text" class="input is-larg mb-2" placeholder="What do yo u need?" />
-                            <button type="submit" class="site-btn">SEARCH</button>
-                        </form>
-                    </div>
                     <ul style="display: none">
                         @foreach ($categories as $category)
                             <li><a href="{{route('commerces.category', $category)}}">{{ $category->name }}</a></li>
                         @endforeach
                     </ul>
                 </div>
+            </div>
+
+            <div class="col-lg-9">
+
             </div>
         </div>
     </div>
