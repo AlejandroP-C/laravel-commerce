@@ -15,7 +15,7 @@ class CommerceSeeder extends Seeder
     public function run(): void
     {
         $commerces = Commerce::factory(10)->create();
-
+        
         foreach ($commerces as $commerce) {
             Image::factory(1)->create([
                 'imageable_id' => $commerce->id,

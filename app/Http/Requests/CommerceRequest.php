@@ -33,6 +33,7 @@ class CommerceRequest extends FormRequest
             'location' => 'required',
             'description' => 'required',
             'validate' => 'required|in:1,2',
+            'categories' => 'required',
             'file' => 'image'
         ];
 
@@ -40,9 +41,8 @@ class CommerceRequest extends FormRequest
             $rules['slug'] ='required|unique:commerces,slug,' . $commerce->id;
         }
 
-        if($this->status == 2){
+        if($this->validate == 2){
             $rules = array_merge($rules,[
-                'categories' => 'required',
                 'status' => 'required'
             ]);
         }

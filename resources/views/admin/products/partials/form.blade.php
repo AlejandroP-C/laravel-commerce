@@ -36,6 +36,22 @@
     @enderror
 </div>
 
+<div class="form-group">
+    <p class="font-weight-bold">Comercios</p>
+
+    @foreach ($commerces as $commerce)
+        <label class="mr-2">
+            {!! Form::checkbox('commerces[]', $commerce->id, null) !!}
+            {{ $commerce->name }}
+        </label><br>
+    @endforeach
+
+    @error('commerces')
+        <br>
+        <small class="text-danger">{{ $message }}</small>
+    @enderror
+</div>
+
 <div class="row mb-3">
     <div class="col">
         <div class="image-wrapper">
@@ -80,7 +96,6 @@
         <small class="text-danger">{{ $message }}</small>
     @enderror
 </div>
-
 
 {!! Form::hidden('votes_valoration', 0) !!}
 {!! Form::hidden('total_votes', 0) !!}

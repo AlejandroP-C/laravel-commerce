@@ -33,6 +33,7 @@ class ProductsRequest extends FormRequest
             'file' => 'image',
             'votes_valoration' => 'required',
             'total_votes' => 'required',
+            'commerces' => 'required'
         ];
 
         if($product){

@@ -150,7 +150,7 @@ return [
 
     'layout_topnav' => null,
     'layout_boxed' => null,
-    'layout_fixed_sidebar' => null,
+    'layout_fixed_sidebar' => true,
     'layout_fixed_navbar' => null,
     'layout_fixed_footer' => null,
     'layout_dark_mode' => null,
@@ -316,10 +316,22 @@ return [
         ],
         ['header' => 'ADMINISTRADOR'],
         [
+            'text' => 'Usuarios',
+            'route'  => 'admin.users.index',
+            'icon' => 'fas fa-fw fa-users',
+             'can'  => 'admin.users.index', 
+        ],
+        [
             'text' => 'Categorias',
             'route'  => 'admin.categories.index',
             'icon' => 'fab fa-fw fa-buffer',
             'can'  => 'admin.categories.index',
+        ],
+        [
+            'text' => 'Lista de Roles',
+            'route'  => 'admin.roles.index',
+            'icon' => 'fas fa-fw fa-users-cog',
+             'can'  => 'admin.roles.index', 
         ],
         
         
@@ -342,6 +354,12 @@ return [
             'route'  => 'admin.commerces.create',
             'icon' => 'fas fa-fw fa-file',
             'can'  => 'admin.commerces.create',
+        ]
+        ,[
+            'text'        => 'Lista de Productos',
+            'route'         => 'admin.products.index',
+            'icon'        => 'far fa-fw fa-clipboard',
+            'label_color' => 'success',
         ],
     
        
