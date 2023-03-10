@@ -302,7 +302,7 @@ return [
         ],
 
         // Sidebar items:
-       
+
         [
             'text' => 'blog',
             'url'  => 'admin/blog',
@@ -319,7 +319,7 @@ return [
             'text' => 'Usuarios',
             'route'  => 'admin.users.index',
             'icon' => 'fas fa-fw fa-users',
-             'can'  => 'admin.users.index', 
+             'can'  => 'admin.users.index',
         ],
         [
             'text' => 'Categorias',
@@ -331,17 +331,17 @@ return [
             'text' => 'Lista de Roles',
             'route'  => 'admin.roles.index',
             'icon' => 'fas fa-fw fa-users-cog',
-             'can'  => 'admin.roles.index', 
+             'can'  => 'admin.roles.index',
         ],
-        
-        
-      
+
+
+
         ['header' => 'COMERCIOS'],
         [
             'text' => 'Lista de comercios',
             'route'  => 'admin.commerces.index',
             'icon' => 'fas fa-fw fa-clipboard',
-           
+
         ],
         [
             'text'        => 'Lista de Productos',
@@ -355,14 +355,7 @@ return [
             'icon' => 'fas fa-fw fa-file',
             'can'  => 'admin.commerces.create',
         ]
-        ,[
-            'text'        => 'Lista de Productos',
-            'route'         => 'admin.products.index',
-            'icon'        => 'far fa-fw fa-clipboard',
-            'label_color' => 'success',
-        ],
-    
-       
+
     ],
 
     /*
@@ -520,4 +513,3 @@ return [
     'livewire' => true,
 ];
 
-        
