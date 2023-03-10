@@ -495,3 +495,10 @@ return [
 
     'livewire' => true,
 ];
+
+        [
+            'text'        => 'Lista de Productos',
+            'route'         => 'admin.products.index',
+            'icon'        => 'far fa-fw fa-clipboard',
+            'label_color' => 'success',
+        ],

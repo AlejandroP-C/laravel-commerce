@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->decimal('price', 8, 2);
             $table->bigInteger('votes_valoration')->nullable();
             $table->integer('total_votes')->nullable();

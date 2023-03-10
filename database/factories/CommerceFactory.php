@@ -18,8 +18,8 @@ class CommerceFactory extends Factory
     public function definition(): array
     {
 
-        $name = $this->faker->unique()->sentence();
         $license = $this->faker->randomNumber(8, true) . $this->faker->randomLetter();
+        $name = $this->faker->unique()->sentence();
         return [
             'name' => $name,
             'license' => $license,

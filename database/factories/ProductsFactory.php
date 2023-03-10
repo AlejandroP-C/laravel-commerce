@@ -22,9 +22,11 @@ class ProductsFactory extends Factory
             'slug' => Str::slug($name),
             'description' => $this->faker->text(100),
             'price' => $this->faker->randomFloat(1, 0, 99),
-            'votes_valoration' => $this->faker->randomNumber(3, true),
-            'total_votes' => $this->faker->randomNumber(2, false)
+            'votes_valoration' => $this->faker->numberBetween(40,100),
+            'total_votes' => $this->faker->numberBetween(20,39)
 
         ];
     }
 }
+
+

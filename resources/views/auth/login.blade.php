@@ -6,9 +6,9 @@
 
         <x-validation-errors class="mb-4" />
 
-        @if (session('status'))
+        @if (session('success'))
             <div class="mb-4 font-medium text-sm text-green-600">
-                {{ session('status') }}
+                {{ session('success') }}
             </div>
         @endif
 
@@ -31,6 +31,7 @@
                     <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
                 </label>
             </div>
+           
 
             <div class="flex items-center justify-end mt-4">
                 @if (Route::has('password.request'))
@@ -42,6 +43,7 @@
                 <x-button class="ml-4">
                     {{ __('Log in') }}
                 </x-button>
+                
             </div>
         </form>
     </x-authentication-card>

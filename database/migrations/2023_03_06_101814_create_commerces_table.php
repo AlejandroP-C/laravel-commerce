@@ -16,15 +16,11 @@ return new class extends Migration
             $table->string('name');
             $table->string('license');
             $table->string('slug');
-            $table->longText('description')->nullable();
-            
+            $table->string('description');
             $table->string('location');
             
-        
             $table->enum('validate', [1,2])->default(1);
-        
             $table->boolean('status')->default(false);
-
             $table->unsignedBigInteger('user_id');
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
