@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
+
 class RoleSeeder extends Seeder
 {
     /**
@@ -14,8 +15,8 @@ class RoleSeeder extends Seeder
      */
     public function run(): void
     {
-       $role1= Role::create(['name' => 'SuperAdministracionPortal']);
-       $role2= Role::create(['name' => 'AdministracionComercios']);
+       $role1= Role::create(['name' => 'SuperAdmin']);
+       $role2= Role::create(['name' => 'AdminComercios']);
 
 
        Permission::create(['name' => 'admin.home'])->syncRoles([$role1,$role2]); 

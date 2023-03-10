@@ -25,14 +25,15 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::all();
+        $commerces = Commerce::where('user_id', auth()->user()->id)->get();
 
-        return view('admin.products.create', compact('categories'));
+        return view('admin.products.create', compact('categories', 'commerces'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ProductsRequest $request)
+    public function store(ProductsRequest $request, Commerce $com)
     {
         $product = Products::create($request->all());
 
@@ -45,11 +46,11 @@ class ProductController extends Controller
             ]);
         }
 
-        $commerce = Commerce::find(auth()->user()->id);
+
 
         if ($request->categories) {
             $product->categories()->sync($request->categories);
-            $product->commerces()->sync($commerce);
+            $product->commerces()->sync($request->commerces);
         }
 
 
@@ -70,7 +71,10 @@ class ProductController extends Controller
     public function edit(Products $product)
     {
         $categories = Category::all();
-        return view('admin.products.edit', compact('product', 'categories'));
+        $commerces = Commerce::where('user_id', auth()->user()->id)->get();
+
+
+        return view('admin.products.edit', compact('product', 'categories', 'commerces'));
     }
 
     /**
@@ -80,24 +84,24 @@ class ProductController extends Controller
     {
         $product->update($request->all());
 
-        if ($request->file('file')) {
 
-            $url =  Storage::put('public/images', $request->file('file'));
+        $url =  Storage::put('public/images', $request->file('file'));
 
-            if ($product->image) {
-                Storage::delete($product->image->url);
+        if ($product->image) {
+            Storage::delete($product->image->url);
 
-                $product->image->update([
-                    'url' => $url
-                ]);
-            } else {
-                $product->image()->create([
-                    'url' => $url
-                ]);
-            }
+            $product->image->update([
+                'url' => $url
+            ]);
+        } else {
+            $product->image()->create([
+                'url' => $url
+            ]);
         }
-        if ($request->categories) {
+
+        if ($request->categories && $request->commerces) {
             $product->categories()->sync($request->categories);
+            $product->commerces()->sync($request->commerces);
         }
 
         return redirect()->route('admin.products.edit', $product)->with('info', 'El producto se ha actualizado correctamente.');
@@ -110,6 +114,6 @@ class ProductController extends Controller
     {
         $product->delete();
 
-        return redirect()->route('admin.products.index')->with('info','Producto eliminado correctamente.');
+        return redirect()->route('admin.products.index')->with('info', 'Producto eliminado correctamente.');
     }
 }

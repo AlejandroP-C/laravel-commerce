@@ -35,10 +35,18 @@ class CommerceController extends Controller
      */
     public function store(CommerceRequest $request)
     {
+
         $commerce = Commerce::create($request->all());
 
+
+        $url =  Storage::put('public/images', $request->file('file'));
+
+        $commerce->image()->create([
+            'url' => $url
+        ]);
+
         if ($request->categories) {
-            $commerce->categories()->attach($request->categories);
+            $commerce->categories()->sync($request->categories);;
         }
 
         return redirect()->route('admin.commerces.edit', $commerce);
@@ -59,7 +67,7 @@ class CommerceController extends Controller
     {
         $categories = Category::all();
 
-        return view('admin.commerces.edit', compact('commerce', 'categories'));
+        return view('admin.commerces.edit', compact('commerce', 'categories'))->with('info', 'El comercio se creó con éxito');;
     }
 
     /**
@@ -69,10 +77,25 @@ class CommerceController extends Controller
     {
         $commerce->update($request->all());
 
+
+        $url =  Storage::put('public/images', $request->file('file'));
+
+        if ($commerce->image) {
+            Storage::delete($commerce->image->url);
+
+            $commerce->image->update([
+                'url' => $url
+            ]);
+        } else {
+            $commerce->image()->create([
+                'url' => $url
+            ]);
+        }
+
         if ($request->categories) {
             $commerce->categories()->sync($request->categories);
         }
-        
+
 
         return redirect()->route('admin.commerces.edit', $commerce)->with('info', 'El comercio se actualizó con éxito');
     }

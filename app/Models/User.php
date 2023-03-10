@@ -11,7 +11,6 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Commerce;
 use Illuminate\Support\Facades\Hash;
-use App\Models\Commerce;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
@@ -22,7 +21,6 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
     use HasRoles;
-
 
     /**
      * The attributes that are mass assignable.
@@ -73,5 +71,7 @@ class User extends Authenticatable
     public function setPasswordAttribute($password){
         $this->attributes['password'] = Hash::needsRehash($password) ? Hash::make($password) : $password;
     }
+
+
 }
 
