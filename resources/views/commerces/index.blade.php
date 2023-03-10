@@ -25,17 +25,13 @@
 
     </style>
 
-    <div class="section-title uppercase">
-        <h2>{{ $category->name }}</h2>
-    </div>
-
     <div class="cards">
 
         @foreach ($commerces as $commerce)
 
             <a href="{{route('commerces.show', $commerce)}}" class="bg-white shadow-xl rounded-lg overflow-hidden">
 
-                <div class="bg-cover bg-center h-56 p-4" style="background-image: url({{Storage::url($commerce->image->url)}})"></div>
+                <div class="bg-cover bg-center h-56 p-4" style="background-image: url({{Storage::url($commerce->image->url)}} )"></div>
 
                 <div class="p-5">
                     <p class="uppercase tracking-wide text-sm font-bold text-gray-700">{{ $commerce->name }}</p>

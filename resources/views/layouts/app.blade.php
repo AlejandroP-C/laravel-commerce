@@ -24,15 +24,21 @@
     <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
 
+    <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('js/custom.js') }}"></script>
+
     <!-- Styles -->
     @livewireStyles
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/jquery-ui.min.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('css/nice-select.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('css/slicknav.min.css') }}" type="text/css">
-
+    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('css/products/font-awesome.min.css') }}"> --}}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/products/owl.carousel.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/products/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/products/magnific-popup.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/products/animate.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/products/shoes.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/products/responsive.css') }}">
 
 </head>
 
