@@ -12,9 +12,9 @@ class CommercePolicy
 
     public function author(User $user, Commerce $commerce){
         if($user->id == $commerce->user_id){
-            return false;
-        }else{
             return true;
+        }else{
+            return false;
         }
     }
 }

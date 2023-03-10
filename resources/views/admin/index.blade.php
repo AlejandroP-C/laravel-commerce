@@ -7,6 +7,13 @@
 @stop
 
 @section('content')
+@if (session('info'))
+<div class="alert alert-success">
+    <strong>
+        {{ session('info') }}
+    </strong>
+</div>
+@endif
     <p>Welcome to this beautiful admin panel.</p>
 @stop
 

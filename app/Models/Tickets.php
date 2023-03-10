@@ -9,7 +9,14 @@ class Tickets extends Model
 {
     use HasFactory;
 
-    public function commerces(){
+    protected $fillable = [
+        'message',
+        'date',
+        'commerce_id'
+    ];
+
+    public function commerces()
+    {
         return $this->hasMany(Commerce::class);
     }
 }

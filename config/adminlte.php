@@ -354,6 +354,19 @@ return [
             'route'  => 'admin.commerces.create',
             'icon' => 'fas fa-fw fa-file',
             'can'  => 'admin.commerces.create',
+        ],
+        ['header' => 'TICKETS'],
+        [
+            'text' => 'Lista de Tickets',
+            'route'  => 'admin.tickets.index',
+            'icon' => 'fas fa-fw fa-window-restore',
+            'can'  => 'admin.tickets.index',
+        ],
+        [
+            'text' => 'Gestionar Ticket',
+            'route'  => 'admin.tickets.create',
+            'icon' => 'fas fa-fw fa-hashtag',
+            'can'  => 'admin.tickets.create',
         ]
 
     ],
