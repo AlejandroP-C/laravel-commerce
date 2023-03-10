@@ -32,7 +32,7 @@ class CommerceRequest extends FormRequest
             'license' => 'required',
             'location' => 'required',
             'description' => 'required',
-            'validate' => 'required|in:1,2',
+            'validate' => 'required',
             'categories' => 'required',
             'file' => 'image'
         ];

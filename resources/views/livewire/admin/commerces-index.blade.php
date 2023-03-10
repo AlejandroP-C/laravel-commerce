@@ -21,7 +21,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
-                        <th colspan="2"></th>
+                        <th colspan="3"></th>
                     </tr>
                 </thead>
 
@@ -50,10 +50,15 @@
                             <tr>
                                 <td>{{ $commerce->id }}</td>
                                 <td>{{ $commerce->name }}</td>
+                                <td>
+                                    <a class="btn btn-success btn-sm" href="{{ route('admin.products.index') }}">Administrar
+                                        Productos</a>
+                                </td>
                                 <td with="10px">
                                     <a class="btn btn-primary btn-sm"
                                         href="{{ route('admin.commerces.edit', $commerce) }}">Editar</a>
                                 </td>
+
                                 <td with="10px">
                                     <form action="{{ route('admin.commerces.destroy', $commerce) }}" method="POST">
                                         @csrf
@@ -72,10 +77,11 @@
 
             </table>
         </div>
-
-        <div class="card-footer">
-            {{ $commerces->links('pagination::bootstrap-4') }}
-        </div>
+        @can('admin.commerces.edit')
+            <div class="card-footer">
+                {{ $commerces->links('pagination::bootstrap-4') }}
+            </div>
+        @endcan
     @else
         <div class="card-body">
             <strong>No hay ningun registro ...</strong>

@@ -41,7 +41,7 @@ class ProductController extends Controller
         if ($request->file('file')) {
             $url =  Storage::put('public/images', $request->file('file'));
 
-            $product->image()->create([
+            $product->images()->create([
                 'url' => $url
             ]);
         }
@@ -94,7 +94,7 @@ class ProductController extends Controller
                 'url' => $url
             ]);
         } else {
-            $product->image()->create([
+            $product->images()->create([
                 'url' => $url
             ]);
         }

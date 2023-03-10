@@ -182,20 +182,7 @@
 
             <div class="col-lg-9">
                 <div class="form">
-                    <div class="select">
-                        <form action="#">
-                            <div class="hero__search__categories">
-                                <select name="categories" id="categories" class="custom-select mb-2">
-                                    <option value="" selected>Categoria...</option>
-                                    @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <input type="text" class="input is-larg mb-2" placeholder="What do yo u need?" />
-                            <button type="submit" class="site-btn">SEARCH</button>
-                        </form>
-                    </div>
+                    
                     <ul style="display: none">
                         @foreach ($categories as $category)
                             <li><a href="{{route('commerces.category', $category)}}">{{ $category->name }}</a></li>
