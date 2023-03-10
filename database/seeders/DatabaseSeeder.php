@@ -24,11 +24,9 @@ class DatabaseSeeder extends Seeder
 
         $this->call(UserSeeder::class);
         Category::factory(4)->create();
-        Commerce::factory(10)->create()->unique();
-        Tickets::factory(10)->create();
-        Products::factory(25)->create()->unique();
         $this->call(CommerceSeeder::class) ;
         $this->call(ProductSeeder::class);
-        
+        Tickets::factory(10)->create();
+
     }
 }

@@ -15,20 +15,23 @@ class ProductSeeder extends Seeder
     public function run(): void
     {
         $products = Products::factory(25)->create();
-        
+
         foreach ($products as $product) {
-            Image::factory(1)->create([
-                'imageable_id' => $product->id,
-                'imageable_type' => Products::class
-            ]);
-           
+
+            for ($i = 1; $i <= rand(1, 4); $i++) {
+                Image::factory(1)->create([
+                    'imageable_id' => $product->id,
+                    'imageable_type' => Products::class
+                ]);
+            }
+
             $product->categories()->attach([
-                rand(1,4)
+                rand(1, 4)
             ]);
 
             $product->commerces()->attach([
-                rand(1,10)
+                rand(1, 10)
             ]);
-            }
+        }
     }
 }
