@@ -10,6 +10,9 @@
             {{ $commerces->links() }}
 
             @foreach ($commerces as $commerce)
+            
+            <a href="{{ route('admin.products.create', $commerce) }}" class="btn btn-secondary float-right">Añadir producto</a>
+            
                 <div class="mb-3 form-group">
                     <h3 class="text-center"><strong>{{ $commerce->name }}</strong></h3>
 

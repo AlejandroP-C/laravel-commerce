@@ -150,7 +150,7 @@ return [
 
     'layout_topnav' => null,
     'layout_boxed' => null,
-    'layout_fixed_sidebar' => null,
+    'layout_fixed_sidebar' => true,
     'layout_fixed_navbar' => null,
     'layout_fixed_footer' => null,
     'layout_dark_mode' => null,
@@ -354,6 +354,12 @@ return [
             'route'  => 'admin.commerces.create',
             'icon' => 'fas fa-fw fa-file',
             'can'  => 'admin.commerces.create',
+        ]
+        ,[
+            'text'        => 'Lista de Productos',
+            'route'         => 'admin.products.index',
+            'icon'        => 'far fa-fw fa-clipboard',
+            'label_color' => 'success',
         ],
     
        

@@ -31,10 +31,8 @@ class ProductSeeder extends Seeder
             ]);
 
             $product->commerces()->attach([
-                rand(1,2),
-                rand(3,4),
-                rand(5,6),
-                rand(7,10)
+                rand(1,4),
+                rand(5,10)
             ]);
         }
     }

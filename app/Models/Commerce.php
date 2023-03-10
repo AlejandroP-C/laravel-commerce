@@ -11,16 +11,15 @@ class Commerce extends Model
 
    protected $fillable = [
         'name',
-        'license',
         'slug',
+        'license',
         'description',
         'location',
         'validate',
-        'status'
-
+        'status',
+        'user_id'
     ];
 
-    protected $guarded = ['id', 'created_at', 'updated_at'];
 
     public function user(){
         return $this->belongsTo(User::class);

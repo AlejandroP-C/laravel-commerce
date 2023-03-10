@@ -12,7 +12,7 @@ class CommercesIndex extends Component
 {
 
     use WithPagination;
-    
+
     protected $paginationtheme = "bootstrap";
 
     public $search;
@@ -26,11 +26,13 @@ class CommercesIndex extends Component
     {
 
         $commerces = Commerce::where('name', 'LIKE', '%' . $this->search . '%')
-                            ->latest('id')
-                            ->paginate();
-        $commerces2 = Commerce::find(auth()->user()->id);
+            ->latest('id')
+            ->paginate();
+        $commerces2 = Commerce::where('user_id', auth()->user()->id)
+            ->where('name', 'LIKE', '%' . $this->search . '%')
+            ->latest('id')
+            ->paginate();
 
         return view('livewire.admin.commerces-index', compact('commerces', 'commerces2'));
     }
-    
 }
