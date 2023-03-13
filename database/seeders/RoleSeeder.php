@@ -23,16 +23,16 @@ class RoleSeeder extends Seeder
 
        Permission::create(['name' => 'admin.users.index','description' => 'Ver listado de usuarios'])->syncRoles([$role1]);
        Permission::create(['name' => 'admin.users.edit','description' => 'Editar usuarios'])->syncRoles([$role1]);
-       Permission::create(['name' => 'admin.users.update','description' => 'Actualizar categoraías'])->syncRoles([$role1]);
+       Permission::create(['name' => 'admin.users.update','description' => 'Actualizar usuario'])->syncRoles([$role1]);
 
        Permission::create(['name' => 'admin.roles.index','description' => 'Ver listado de roles'])->syncRoles([$role1]);
        Permission::create(['name' => 'admin.roles.create','description' => 'Crear roles'])->syncRoles([$role1]);
        Permission::create(['name' => 'admin.roles.edit','description' => 'Editar roles'])->syncRoles([$role1]);
 
-       Permission::create(['name' => 'admin.categories.index','description' => 'Ver listado de categorías'])->syncRoles([$role1]);
-       Permission::create(['name' => 'admin.categories.create','description' => 'Crear categorías'])->syncRoles([$role1]);
-       Permission::create(['name' => 'admin.categories.edit','description' => 'Editar categoraías'])->syncRoles([$role1]);
-       Permission::create(['name' => 'admin.categories.destroy','description' => 'Eliminar categorías'])->syncRoles([$role1]);
+       Permission::create(['name' => 'admin.categories.index','description' => 'Ver listado de categorias'])->syncRoles([$role1]);
+       Permission::create(['name' => 'admin.categories.create','description' => 'Crear categorias'])->syncRoles([$role1]);
+       Permission::create(['name' => 'admin.categories.edit','description' => 'Editar categorias'])->syncRoles([$role1]);
+       Permission::create(['name' => 'admin.categories.destroy','description' => 'Eliminar categorias'])->syncRoles([$role1]);
        
 
        Permission::create(['name' => 'admin.commerces.index','description' => 'Ver listado de comercios'])->syncRoles([$role1]);

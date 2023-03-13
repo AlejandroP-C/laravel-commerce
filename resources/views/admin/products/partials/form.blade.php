@@ -67,7 +67,7 @@
     <div class="col">
         <div class="form-group">
             {!! Form::label('file', 'Imagen de los productos') !!}
-            {!! Form::file('file', ['class' => 'form-control-file mb-2', 'accept' => 'image/*']) !!}
+            {!! Form::file('file', ['class' => 'form-control-file mb-2', 'accept' => 'image/*', 'multiple']) !!}
            
         </div>
 
@@ -90,7 +90,7 @@
 
 <div class="form-group">
     {!! Form::label('price', 'Precio del producto:') !!}
-    {!! Form::number('price', null, ['class' => 'form-control']) !!}
+    {!! Form::text('price', null, ['class' => 'form-control']) !!}
     @error('price')
         <br>
         <small class="text-danger">{{ $message }}</small>

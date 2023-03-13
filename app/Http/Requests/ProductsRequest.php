@@ -29,8 +29,8 @@ class ProductsRequest extends FormRequest
             'title' => 'required',
             'categories' => 'required',
             'slug' => 'required|unique:products',
-            'price' => 'required',
-            'file' => 'image',
+            'price' => 'required|numeric',
+            'file' => 'image|required',
             'votes_valoration' => 'required',
             'total_votes' => 'required',
             'commerces' => 'required'

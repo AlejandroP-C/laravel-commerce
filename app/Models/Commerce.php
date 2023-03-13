@@ -15,8 +15,6 @@ class Commerce extends Model
         'license',
         'description',
         'location',
-        'validate',
-        'status',
         'user_id'
     ];
 

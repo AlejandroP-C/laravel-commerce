@@ -32,9 +32,8 @@ class CommerceRequest extends FormRequest
             'license' => 'required',
             'location' => 'required',
             'description' => 'required',
-            'validate' => 'required',
             'categories' => 'required',
-            'file' => 'image'
+            'file' => 'image|required'
         ];
 
         if ($commerce) {

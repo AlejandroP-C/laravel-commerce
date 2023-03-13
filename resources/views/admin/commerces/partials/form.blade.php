@@ -76,10 +76,7 @@
             {!! Form::checkbox('validate', 2) !!}
             Apto
         </label>
-        
     @else
-        
-
         @if ('validate' == 2)
             <p class="font-weight-bold">Mostrar a usuarios</p>
             <label>
@@ -89,53 +86,49 @@
         @endif
         {!! Form::hidden('validate', 1) !!}
     @endcan
+</div>
 
-
-    <div class="row mb-3">
-        <div class="col">
-            <div class="image-wrapper">
-                @isset($category->image)
-                    <img id="picture" src="{{ Storage::url($category->image->url) }}">
-                @else
-                    <img id="picture" src="https://cdn.pixabay.com/photo/2015/11/16/14/43/cat-1045782_1280.jpg"
-                        alt="">
-                @endisset
-
-            </div>
-        </div>
-        <div class="col">
-            <div class="form-group">
-                {!! Form::label('file', 'Imagen que se mostrará en el comercio') !!}
-                {!! Form::file('file', ['class' => 'form-control-file', 'accept' => 'image/*']) !!}
-
-                @error('file')
-                    <br>
-                    <span class="text-danger">{{ $message }}</span>
-                @enderror
-            </div>
-
-
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum ipsum, necessitatibus ratione temporibus
-            veniam, distinctio nisi incidunt rerum deleniti dolor inventore earum soluta, assumenda iusto non modi ab
-            rem possimus?
+<div class="row mb-3">
+    <div class="col">
+        <div class="image-wrapper">
+            @isset($category->image)
+                <img id="picture" src="{{ Storage::url($category->image->url) }}">
+            @else
+                <img id="picture" src="https://cdn.pixabay.com/photo/2015/11/16/14/43/cat-1045782_1280.jpg"
+                    alt="">
+            @endisset
 
         </div>
     </div>
-    
-    <div class="form-group">
-        {!! Form::label('description', 'Descripción del comercio:') !!}
-        {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
+    <div class="col">
+        <div class="form-group">
+            {!! Form::label('file', 'Imagen que se mostrará en el comercio') !!}
+            {!! Form::file('file', ['class' => 'form-control-file', 'accept' => 'image/*']) !!}
 
-        @error('description')
-            <small class="text-danger">{{ $message }}</small>
-        @enderror
+            @error('file')
+                <br>
+                <span class="text-danger">{{ $message }}</span>
+            @enderror
+        </div>
+
+
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum ipsum, necessitatibus ratione temporibus
+        veniam, distinctio nisi incidunt rerum deleniti dolor inventore earum soluta, assumenda iusto non modi ab
+        rem possimus?
 
     </div>
-    @can('admin.categories.create')
-    
-    
+</div>
+
+<div class="form-group">
+    {!! Form::label('description', 'Descripción del comercio:') !!}
+    {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
+
+    @error('description')
+        <small class="text-danger">{{ $message }}</small>
+    @enderror
+
+</div>
+@can('admin.categories.create')
     {!! Form::hidden('user_id', auth()->user()->id) !!}
-    
-    
-    @endcan
+@endcan
 </div>

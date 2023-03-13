@@ -35,6 +35,7 @@ class ProductController extends Controller
      */
     public function store(ProductsRequest $request, Commerce $com)
     {
+        (int)$request->price;
         $product = Products::create($request->all());
 
 
@@ -54,7 +55,7 @@ class ProductController extends Controller
         }
 
 
-        return redirect()->route('admin.products.edit', $product)->with('info', 'El product se agregó con éxito');
+        return redirect()->route('admin.products.edit', $product)->with('info', 'El producto se agregó con éxito');
     }
 
     /**
@@ -82,6 +83,8 @@ class ProductController extends Controller
      */
     public function update(ProductsRequest $request, Products $product)
     {
+        (int)$request->price;
+
         $product->update($request->all());
 
 
