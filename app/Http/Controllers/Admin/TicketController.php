@@ -40,14 +40,17 @@ class TicketController extends Controller
         ]);
 
         $commerces = Commerce::where('user_id', auth()->user()->id)->first();
+        if (isset($commerces->id)) {
 
-        Tickets::create([
-            'message' => $request->message,
-            'date' => $request->date,
-            'commerce_id' => $commerces->id
-        ]);
-
-        return redirect()->route('admin.home')->with('info','El ticket se solicitó con exito');
+            Tickets::create([
+                'message' => $request->message,
+                'date' => $request->date,
+                'commerce_id' => $commerces->id
+            ]);
+            return redirect()->route('admin.home')->with('info', 'El ticket se solicitó con exito');
+        } else {
+            return redirect()->route('admin.home')->with('info', 'Necesitas crear un comercio antes de solicitar un ticket');
+        }
     }
 
     /**
@@ -81,6 +84,6 @@ class TicketController extends Controller
     {
         $ticket->delete();
 
-        return redirect()->route('admin.tickets.index')->with('info','Se ha completado la revisión del ticket');
+        return redirect()->route('admin.tickets.index')->with('info', 'Se ha completado la revisión del ticket');
     }
 }
