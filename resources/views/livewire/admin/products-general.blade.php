@@ -30,7 +30,12 @@
                                 <td>{{ $product->description }}</td>
                                 <td>{{ $product->price }}&euro;</td>
                                 <td class="text-center">{{ $product->total_votes }}</td>
-                                <td class="text-center">{{ round($product->votes_valoration / $product->total_votes, 2) }}</td>
+                                @if ($product->total_votes != 0)
+                                    <td class="text-center">
+                                        {{ round($product->votes_valoration / $product->total_votes, 2) }}</td>
+                                @else
+                                    <td class="text-center">0</td>
+                                @endif
                             </tr>
                         </tbody>
                     @endforeach

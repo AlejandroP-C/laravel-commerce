@@ -42,15 +42,18 @@
                                         @csrf
                                         @method('POST')
 
-                                        <select name="descuento" id="descuento" class="form-control form-control-sm" size="1">
-                                            <option value="0">Original</option>
-                                            <option value="0.05">5%</option>
-                                            <option value="0.1">10%</option>
-                                            <option value="0.2">20%</option>
+                                        <select name="descuento" id="descuento" class="form-control form-control-sm"
+                                            size="1">
+                                            <option value="0">Valor Original</option>
+                                            <option value="0.05">5% desc.</option>
+                                            <option value="0.1">10% desc.</option>
+                                            <option value="0.2">20% desc.</option>
+                                            <option value="0.5">50% desc.</option>
                                         </select>
 
                                         <input type="hidden" name="id" value="{{ $product->id }}">
-                                        <button class="btn btn-success mt-1 form-control form-control-sm btn-sm" type="submit">Aplicar</button>
+                                        <button class="btn btn-success mt-1 form-control form-control-sm btn-sm"
+                                            type="submit">Aplicar</button>
                                     </form>
                                 </td>
                                 <td width="10px">
