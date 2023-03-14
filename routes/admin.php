@@ -16,3 +16,4 @@ Route::resource('commerces', CommerceController::class)->names('admin.commerces'
 Route::resource('products', ProductController::class)->names('admin.products');
 Route::resource('roles', RoleController::class)->names('admin.roles');
 Route::resource('tickets', TicketController::class)->names('admin.tickets');
+Route::post('/aplicar-descuento', [ProductController::class, 'aplicarDescuento'])->name('aplicar_descuento');

@@ -65,7 +65,7 @@
 
                             <div class="rating-summary-block">
 
-                                <form action="{{route('product.update', $product)}}" method="post" id="rating-form">
+                                <form action="{{ route('product.update', $product) }}" method="post" id="rating-form">
                                     @csrf
                                     @method('post')
 
@@ -98,7 +98,12 @@
                                 </form>
 
                             </div>
-
+                            <div class="mt-2">
+                                <p>Total votos: {{ $product->total_votes }}</p>
+                            </div>
+                            <div class="mt-2">
+                                <p>Media votos: {{ round($product->votes_valoration / $product->total_votes, 2) }}</p>
+                            </div>
                             <div class="product-des">
                                 <p>{{ $product->description }}</p>
                             </div>
@@ -134,7 +139,6 @@
                 $('#rating-form').submit();
             });
         });
-
     </script>
 
 </x-app-layout>

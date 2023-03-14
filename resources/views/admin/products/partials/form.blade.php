@@ -91,11 +91,11 @@
 <div class="form-group">
     {!! Form::label('price', 'Precio del producto:') !!}
     {!! Form::text('price', null, ['class' => 'form-control']) !!}
+
+
     @error('price')
         <br>
         <small class="text-danger">{{ $message }}</small>
     @enderror
 </div>
 
-{!! Form::hidden('votes_valoration', 0) !!}
-{!! Form::hidden('total_votes', 0) !!}

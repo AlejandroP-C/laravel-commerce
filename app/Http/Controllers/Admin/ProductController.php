@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Products;
 use App\Http\Requests\ProductsRequest;
 use App\Models\Commerce;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
@@ -36,8 +37,10 @@ class ProductController extends Controller
     public function store(ProductsRequest $request, Commerce $com)
     {
         (int)$request->price;
+        
         $product = Products::create($request->all());
-
+        $product->original_price = $product->price;
+        $product->update($request->all());
 
         if ($request->file('file')) {
             $url =  Storage::put('public/images', $request->file('file'));
@@ -85,6 +88,9 @@ class ProductController extends Controller
     {
         (int)$request->price;
 
+
+        $product->original_price = $product->price;
+
         $product->update($request->all());
 
 
@@ -118,5 +124,23 @@ class ProductController extends Controller
         $product->delete();
 
         return redirect()->route('admin.products.index')->with('info', 'Producto eliminado correctamente.');
+    }
+
+    public function aplicarDescuento(Request $request)
+    {
+        $product = Products::find($request->id);
+
+        if ($request->descuento != 0) {
+
+            $descuento = $request->descuento;
+            $precio_descuento = $product->price - ($product->price * $descuento);
+            $product->price = $precio_descuento;
+            $product->update($request->all());
+            return redirect()->back()->with('info', 'Descuento aplicado correctamente.');
+        } else {
+            $product->price = $product->original_price;
+            $product->update($request->all());
+            return redirect()->back()->with('info', 'Precio restaurado correctamente.');
+        }
     }
 }

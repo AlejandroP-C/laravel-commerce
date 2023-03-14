@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('slug');
             $table->string('description')->nullable();
             $table->decimal('price', 8, 2);
+            $table->decimal('original_price', 8,2)->nullable();
             $table->bigInteger('votes_valoration')->nullable();
             $table->integer('total_votes')->nullable();
             $table->timestamps();

@@ -12,7 +12,8 @@ class Tickets extends Model
     protected $fillable = [
         'message',
         'date',
-        'commerce_id'
+        'commerce_id',
+        'status'
     ];
 
     public function commerces()

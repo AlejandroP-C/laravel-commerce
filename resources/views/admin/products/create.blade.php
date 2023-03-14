@@ -13,8 +13,11 @@
             {!! Form::open(['route' => 'admin.products.store', 'autocomplete' => 'off', 'files' => true]) !!}
 
 
-           @include('admin.products.partials.form')
+            @include('admin.products.partials.form')
 
+
+            {!! Form::hidden('votes_valoration', 0) !!}
+            {!! Form::hidden('total_votes', 0) !!}
 
             {!! Form::submit('Añadir producto', ['class' => 'btn btn-primary']) !!}
 
@@ -55,19 +58,19 @@
             });
         });
 
-     //Cambiar imagen
+        //Cambiar imagen
 
-     document.getElementById("file").addEventListener('change', cambiarImagen);
+        document.getElementById("file").addEventListener('change', cambiarImagen);
 
-     function cambiarImagen(event) {
-         var file = event.target.files[0];
+        function cambiarImagen(event) {
+            var file = event.target.files[0];
 
-         var reader = new FileReader();
-         reader.onload = (event) => {
-             document.getElementById("picture").setAttribute('src', event.target.result);
-         };
-         reader.readAsDataURL(file);
-     }
+            var reader = new FileReader();
+            reader.onload = (event) => {
+                document.getElementById("picture").setAttribute('src', event.target.result);
+            };
+            reader.readAsDataURL(file);
+        }
     </script>
 
 @stop

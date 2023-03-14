@@ -20,6 +20,7 @@ class TicketsFactory extends Factory
         return [
             'message' => $this->faker->text(100),
             'date' => $this->faker->date($format = 'Y-m-d'),
+            'status' => $this->faker->randomElement([1, 2, 3]),
             'commerce_id' => Commerce::all()->random()->id,
         ];
     }

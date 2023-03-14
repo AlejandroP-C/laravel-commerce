@@ -314,12 +314,15 @@ return [
             'icon'        => 'fas fa-tachometer-alt fa-fw',
             'label_color' => 'success',
         ],
-        ['header' => 'ADMINISTRADOR'],
+        [
+            'header' => 'ADMINISTRADOR',
+            'can' => 'admin.users.index'
+        ],
         [
             'text' => 'Usuarios',
             'route'  => 'admin.users.index',
             'icon' => 'fas fa-fw fa-users',
-             'can'  => 'admin.users.index',
+            'can'  => 'admin.users.index',
         ],
         [
             'text' => 'Categorias',
@@ -331,8 +334,9 @@ return [
             'text' => 'Lista de Roles',
             'route'  => 'admin.roles.index',
             'icon' => 'fas fa-fw fa-users-cog',
-             'can'  => 'admin.roles.index',
+            'can'  => 'admin.roles.index',
         ],
+       
 
 
 
@@ -360,7 +364,7 @@ return [
             'text' => 'Lista de Tickets',
             'route'  => 'admin.tickets.index',
             'icon' => 'fas fa-fw fa-window-restore',
-            'can'  => 'admin.tickets.index',
+            'can'  => 'admin.tickets.create',
         ],
         [
             'text' => 'Gestionar Ticket',
@@ -525,4 +529,3 @@ return [
 
     'livewire' => true,
 ];
-

@@ -16,9 +16,17 @@ class TicketController extends Controller
     public function index()
     {
         $tickets = Tickets::all();
-        $commerces = Category::all();
+        $commerces = Commerce::all();
 
-        return view('admin.tickets.index', compact('tickets', 'commerces'));
+        $commerces_user = Commerce::where('user_id', auth()->user()->id)->first();
+        $users = Commerce::all();
+
+        if (isset($commerces_user)) {
+            $ticketsCommerce = Tickets::where('commerce_id', $commerces_user->id)->get();
+            return view('admin.tickets.index', compact('tickets', 'commerces', 'ticketsCommerce'));
+        } else {
+            return view('admin.tickets.index', compact('tickets', 'commerces', 'users'));
+        }
     }
 
     /**
@@ -66,7 +74,7 @@ class TicketController extends Controller
      */
     public function edit(Tickets $ticket)
     {
-        //
+        return view('admin.tickets.edit', compact('ticket'));
     }
 
     /**
@@ -74,16 +82,23 @@ class TicketController extends Controller
      */
     public function update(Request $request, Tickets $ticket)
     {
-        //
+        $ticket->update($request->all());
+
+        return redirect()->route('admin.tickets.edit', $ticket)->with('info', 'El producto se ha actualizado correctamente.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Tickets $ticket)
+    public function destroy(Tickets $ticket2)
     {
-        $ticket->delete();
+        $ticketsCompletados = Tickets::where('status', 3)->get();
 
+        foreach ($ticketsCompletados as $ticket) {
+            $ticket->delete();
+        }
         return redirect()->route('admin.tickets.index')->with('info', 'Se ha completado la revisión del ticket');
     }
+
+    
 }

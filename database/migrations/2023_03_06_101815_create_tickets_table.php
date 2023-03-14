@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('message');
             $table->date('date');
+            $table->enum('status', [1,2,3])->default(1);
 
             $table->unsignedBigInteger('commerce_id');
 
