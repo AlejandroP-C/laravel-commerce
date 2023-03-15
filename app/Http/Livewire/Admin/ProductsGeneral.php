@@ -27,7 +27,8 @@ class ProductsGeneral extends Component
 
         $products = Products::where('total_votes', ">=", 0)
             ->where('title', 'LIKE', '%' . $this->search . '%')
-            ->latest('total_votes')
+            ->orWhere('id', 'LIKE', '%' . $this->search)
+            ->orWhere('price', 'LIKE', '%' . $this->search . '%')
             ->paginate(10);
 
 

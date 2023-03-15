@@ -32,7 +32,9 @@ class ProductsIndex extends Component
             ->select('products.*')
             ->get();
          */
-        $commerces = Commerce::where('user_id', auth()->user()->id)->where('name','LIKE','%' . $this->search .'%')->paginate(1);
+        $commerces = Commerce::where('user_id', auth()->user()->id)
+            ->where('name', 'LIKE', '%' . $this->search . '%')
+            ->paginate(1);
 
         return view('livewire.admin.products-index', compact('commerces'));
     }

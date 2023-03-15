@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\ActivityLogs;
 use App\Models\Category;
 use App\Models\Commerce;
 use App\Models\Tickets;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TicketController extends Controller
 {
@@ -55,6 +57,9 @@ class TicketController extends Controller
                 'date' => $request->date,
                 'commerce_id' => $commerces->id
             ]);
+
+            $this->logActivity('Crear ticket', 'Se creó un nuevo ticket');
+
             return redirect()->route('admin.home')->with('info', 'El ticket se solicitó con exito');
         } else {
             return redirect()->route('admin.home')->with('info', 'Necesitas crear un comercio antes de solicitar un ticket');
@@ -84,6 +89,7 @@ class TicketController extends Controller
     {
         $ticket->update($request->all());
 
+
         return redirect()->route('admin.tickets.edit', $ticket)->with('info', 'El producto se ha actualizado correctamente.');
     }
 
@@ -100,5 +106,13 @@ class TicketController extends Controller
         return redirect()->route('admin.tickets.index')->with('info', 'Se ha completado la revisión del ticket');
     }
 
-    
+    private function logActivity($action, $description)
+    {
+        // Crear un nuevo registro de actividad
+        $activityLog = new ActivityLogs();
+        $activityLog->user_id = Auth::user()->id; // Registrar el ID del usuario que realizó la acción
+        $activityLog->action = $action;
+        $activityLog->description = $description;
+        $activityLog->save();
+    }
 }

@@ -167,12 +167,12 @@ return [
     |
     */
 
-    'classes_auth_card' => 'card-outline card-primary',
+    'classes_auth_card' => 'card-outline card-success',
     'classes_auth_header' => '',
     'classes_auth_body' => '',
     'classes_auth_footer' => '',
     'classes_auth_icon' => '',
-    'classes_auth_btn' => 'btn-flat btn-primary',
+    'classes_auth_btn' => 'btn-flat btn-success',
 
     /*
     |--------------------------------------------------------------------------
@@ -192,7 +192,7 @@ return [
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-dark-primary elevation-4',
+    'classes_sidebar' => 'sidebar-dark-success elevation-4',
     'classes_sidebar_nav' => '',
     'classes_topnav' => 'navbar-white navbar-light',
     'classes_topnav_nav' => 'navbar-expand',
@@ -309,7 +309,7 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'dashboard',
+            'text'        => 'Dashboard',
             'route'         => 'admin.home',
             'icon'        => 'fas fa-tachometer-alt fa-fw',
             'label_color' => 'success',
@@ -336,7 +336,13 @@ return [
             'icon' => 'fas fa-fw fa-users-cog',
             'can'  => 'admin.roles.index',
         ],
-       
+        [
+            'text' => 'Registro de actividades',
+            'route'  => 'admin.activity_logs.index',
+            'icon' => 'fas fa-fw fa-registered',
+            'can'  => 'admin.roles.index',
+        ],
+
 
 
 

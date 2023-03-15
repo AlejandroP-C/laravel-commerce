@@ -3,14 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Livewire\Admin\CommercesIndex;
 use App\Models\Category;
+use App\Models\Commerce;
 use Illuminate\Http\Request;
 
 
 class CategoryController extends Controller
 {
 
-    
+
 
     /**
      * Display a listing of the resource.
@@ -39,14 +41,20 @@ class CategoryController extends Controller
             'name' => 'required',
             'slug' => 'required|unique:categories'
         ]);
-        
+
         $category = Category::create($request->all());
 
-        return redirect()->route('admin.categories.edit', $category)->with('info','La categoria se creó con exito');
+        return redirect()->route('admin.categories.edit', $category)->with('info', 'La categoria se creó con exito');
     }
 
-  
-    public function edit( Category $category)
+    public function show(Category $category)
+    {
+
+
+        return view('admin.categories.show', compact('category'));
+    }
+
+    public function edit(Category $category)
     {
         return view('admin.categories.edit', compact('category'));
     }
@@ -62,15 +70,15 @@ class CategoryController extends Controller
         ]);
 
         $category->update($request->all());
-        return redirect()->route('admin.categories.edit', $category)->with('info','La categoria se actualizó con exito');
+        return redirect()->route('admin.categories.edit', $category)->with('info', 'La categoria se actualizó con exito');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy( Category $category)
+    public function destroy(Category $category)
     {
-       $category->delete();
-       return redirect()->route('admin.categories.index')->with('info','La categoria se eliminó con exito');
+        $category->delete();
+        return redirect()->route('admin.categories.index')->with('info', 'La categoria se eliminó con exito');
     }
 }

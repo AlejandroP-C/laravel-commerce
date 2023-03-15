@@ -7,7 +7,9 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Products;
 use App\Http\Requests\ProductsRequest;
+use App\Models\ActivityLogs;
 use App\Models\Commerce;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
@@ -37,7 +39,7 @@ class ProductController extends Controller
     public function store(ProductsRequest $request, Commerce $com)
     {
         (int)$request->price;
-        
+
         $product = Products::create($request->all());
         $product->original_price = $product->price;
         $product->update($request->all());
@@ -57,6 +59,7 @@ class ProductController extends Controller
             $product->commerces()->sync($request->commerces);
         }
 
+        $this->logActivity('Crear producto', 'Se creó un nuevo producto con el ID ' . $product->id);
 
         return redirect()->route('admin.products.edit', $product)->with('info', 'El producto se agregó con éxito');
     }
@@ -88,10 +91,10 @@ class ProductController extends Controller
     {
         (int)$request->price;
 
-
-        $product->original_price = $product->price;
+        $product->original_price = (int)$request->price;
 
         $product->update($request->all());
+
 
 
         $url =  Storage::put('public/images', $request->file('file'));
@@ -113,6 +116,8 @@ class ProductController extends Controller
             $product->commerces()->sync($request->commerces);
         }
 
+        $this->logActivity('Actualizar producto', 'Se actualizó un producto con el ID ' . $product->id);
+
         return redirect()->route('admin.products.edit', $product)->with('info', 'El producto se ha actualizado correctamente.');
     }
 
@@ -121,7 +126,28 @@ class ProductController extends Controller
      */
     public function destroy(Products $product)
     {
-        $product->delete();
+        $allCommerces = Commerce::all();
+        $commercesUser = Commerce::where('user_id', auth()->user()->id)->get();
+        $val = 0;
+
+        foreach ($allCommerces as $commerces) {
+            if ($commerces->user_id != auth()->user()->id) {
+                $productoExisteEnComercio = $commerces->products()->where('products_id', $product->id)->exists();
+                if ($productoExisteEnComercio) {
+                    $val++;
+                }
+            }
+        }
+
+        if ($val != 0) {
+            foreach ($commercesUser as $commerce) {
+                $commerce->products()->detach($product->id);
+            }
+        } else {
+            $product->delete();
+        }
+
+        $this->logActivity('Eliminar producto', 'Se eliminó un producto con el ID ' . $product->id);
 
         return redirect()->route('admin.products.index')->with('info', 'Producto eliminado correctamente.');
     }
@@ -136,11 +162,28 @@ class ProductController extends Controller
             $precio_descuento = $product->price - ($product->price * $descuento);
             $product->price = $precio_descuento;
             $product->update($request->all());
+
+            $this->logActivity('Aplicar descuento', 'Se realizó un descuento de un producto con el ID ' . $product->id);
+
+
             return redirect()->back()->with('info', 'Descuento aplicado correctamente.');
         } else {
             $product->price = $product->original_price;
             $product->update($request->all());
+
+            $this->logActivity('Retirar descuento', 'Se retiró el descuento del producto con el ID ' . $product->id);
+
             return redirect()->back()->with('info', 'Precio restaurado correctamente.');
         }
+    }
+
+    private function logActivity($action, $description)
+    {
+        // Crear un nuevo registro de actividad
+        $activityLog = new ActivityLogs();
+        $activityLog->user_id = Auth::user()->id; // Registrar el ID del usuario que realizó la acción
+        $activityLog->action = $action;
+        $activityLog->description = $description;
+        $activityLog->save();
     }
 }

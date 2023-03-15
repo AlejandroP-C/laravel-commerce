@@ -3,7 +3,7 @@
         <div class="card-header">
 
             <input type="text" wire:model="search" class="form-control"
-                placeholder="Ingrese el nombre del producto a buscar">
+                placeholder="Ingrese el id, nombre o precio del producto a buscar">
 
         </div>
         @if ($products->count())

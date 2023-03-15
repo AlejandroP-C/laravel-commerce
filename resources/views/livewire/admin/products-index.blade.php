@@ -61,7 +61,7 @@
                                         href="{{ route('admin.products.edit', $product) }}">Editar</a>
                                 </td>
                                 <td witdth="10px">
-                                    <form action="{{ route('admin.products.destroy', $product) }}" method="POST">
+                                    <form action="{{ route('admin.products.destroy', $product, $commerce) }}" method="POST">
                                         @csrf
                                         @method('delete')
 

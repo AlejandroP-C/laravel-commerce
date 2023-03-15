@@ -31,6 +31,8 @@
                             <tr>
                                 <td>{{ $commerce->id }}</td>
                                 <td>{{ $commerce->name }}</td>
+
+                                //Modificar
                                 <td with="10px">
                                     <a class="btn btn-primary btn-sm"
                                         href="{{ route('admin.commerces.edit', $commerce) }}">Editar</a>
@@ -50,6 +52,9 @@
                             <tr>
                                 <td>{{ $commerce->id }}</td>
                                 <td>{{ $commerce->name }}</td>
+
+
+                                //Modificar
                                 <td>
                                     <a class="btn btn-success btn-sm" href="{{ route('admin.products.index') }}">Administrar
                                         Productos</a>
