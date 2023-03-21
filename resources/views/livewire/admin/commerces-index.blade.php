@@ -21,7 +21,10 @@
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
-                        <th colspan="3"></th>
+                        <th>Licencia</th>
+                        <th>Ubicación</th>
+                        <th>Encargado</th>
+                        <th colspan="2"></th>
                     </tr>
                 </thead>
 
@@ -31,8 +34,13 @@
                             <tr>
                                 <td>{{ $commerce->id }}</td>
                                 <td>{{ $commerce->name }}</td>
-
-                                //Modificar
+                                <td>{{ $commerce->license }}</td>
+                                <td>{{ $commerce->location }}</td>
+                                @foreach ($users as $user)
+                                    @if ($user->id == $commerce->user_id)
+                                        <td>{{ $user->name }}</td>
+                                    @endif
+                                @endforeach
                                 <td with="10px">
                                     <a class="btn btn-primary btn-sm"
                                         href="{{ route('admin.commerces.edit', $commerce) }}">Editar</a>
@@ -52,11 +60,16 @@
                             <tr>
                                 <td>{{ $commerce->id }}</td>
                                 <td>{{ $commerce->name }}</td>
-
-
-                                //Modificar
+                                <td>{{ $commerce->license }}</td>
+                                <td>{{ $commerce->location }}</td>
+                                @foreach ($users as $user)
+                                    @if ($user->id == $commerce->user_id)
+                                        <td>{{ $user->name }}</td>
+                                    @endif
+                                @endforeach
                                 <td>
-                                    <a class="btn btn-success btn-sm" href="{{ route('admin.products.index') }}">Administrar
+                                    <a class="btn btn-success btn-sm"
+                                        href="{{ route('admin.products.index') }}">Administrar
                                         Productos</a>
                                 </td>
                                 <td with="10px">

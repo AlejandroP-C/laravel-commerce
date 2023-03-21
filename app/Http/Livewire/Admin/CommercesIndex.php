@@ -5,7 +5,7 @@ namespace App\Http\Livewire\Admin;
 use Livewire\Component;
 
 use App\Models\Commerce;
-
+use App\Models\User;
 use Livewire\WithPagination;
 
 class CommercesIndex extends Component
@@ -32,7 +32,7 @@ class CommercesIndex extends Component
             ->where('name', 'LIKE', '%' . $this->search . '%')
             ->latest('id')
             ->paginate();
-
-        return view('livewire.admin.commerces-index', compact('commerces', 'commerces2'));
+        $users = User::all();
+        return view('livewire.admin.commerces-index', compact('commerces', 'commerces2', 'users'));
     }
 }

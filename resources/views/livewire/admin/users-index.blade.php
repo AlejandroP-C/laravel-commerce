@@ -1,58 +1,65 @@
 <div>
-   <div class="card">
+    <div class="card">
 
-    <div class="card-header">
-        <input wire:model="search" class="form-control" placeholder="Ingrese el nombre o correo de un usuario">
+        <div class="card-header">
+            <input wire:model="search" class="form-control" placeholder="Ingrese el nombre o correo de un usuario">
 
-    </div>
+        </div>
 
         @if ($users->count())
-        <div class="cardbody">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Email</th>
-                        <th></th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody>
-                    @foreach ($users as $user)
+            <div class="cardbody">
+                <table class="table table-striped">
+                    <thead>
                         <tr>
-                            <td>{{$user->id}}</td>
-                            <td>{{$user->name}}</td>
-                            <td>{{$user->email}}</td>
-                            <td width="10px">
-                                <a class="btn btn-primary" href="{{route('admin.users.edit', $user)}}">Editar</a>
-                            </td>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th colspan="2"></th>
 
                         </tr>
-                    @endforeach
 
-                </tbody>
+                    </thead>
 
-            </table>
+                    <tbody>
+                        @foreach ($users as $user)
+                            <tr>
+                                <td>{{ $user->id }}</td>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->email }}</td>
+                                <td width="10px">
+                                    <a class="btn btn-primary btn-sm" href="{{ route('admin.users.edit', $user) }}">Editar</a>
+                                </td>
+                                <td width="10px">
+                                    <form action="{{ route('admin.users.destroy', $user) }}" method="POST">
+                                        @csrf
+                                        @method('delete')
 
-        </div>
 
-        <div class="card-footer">
-            {{$users->links()}}
+                                        <input type="submit" value="Eliminar" class="btn btn-sm btn-danger">
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
 
-        </div>
+                    </tbody>
 
-        @else 
-        <div class="card-body">
-            <strong>
-                No hay registros
-            </strong>
-        </div>
+                </table>
+
+            </div>
+
+            <div class="card-footer">
+                {{ $users->links() }}
+
+            </div>
+        @else
+            <div class="card-body">
+                <strong>
+                    No hay registros
+                </strong>
+            </div>
 
         @endif
-   
 
-   </div>
+
+    </div>
 </div>

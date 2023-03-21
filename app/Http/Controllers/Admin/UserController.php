@@ -3,27 +3,41 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\User;
-
+use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
-  
- /*  public function __construct()
-  {
-    $this->middleware('can:admin.users.index')->only('index');
-    $this->middleware('can:admin.users.edit')->only('edit', 'update');
-  
-  } */
+
 
     public function index()
     {
-      return view('admin.users.index');
+        return view('admin.users.index');
     }
 
-  
+    public function create()
+    {
+
+        return view('admin.home');
+    }
+
+
+    public function store(Request $request)
+    {
+
+
+
+        return redirect()->route('admin.home');
+    }
+
+
+    public function show(User $user)
+    {
+        return view('admin.users.show', compact('user'));
+    }
+
+
     public function edit(User $user)
     {
 
@@ -35,10 +49,17 @@ class UserController extends Controller
 
     public function update(Request $request, User $user)
     {
-       $user->roles()->sync($request->roles);
+        $user->roles()->sync($request->roles);
 
-       return redirect()->route('admin.users.edit', $user)->with('info', 'Se asignó los roles correctamente');
+        return redirect()->route('admin.users.edit', $user)->with('info', 'Se asignó los roles correctamente');
     }
 
+    public function destroy(User $user)
+    {
 
+        $user->delete();
+
+
+        return redirect()->route('admin.users.index', $user)->with('info', 'El usuario que debio hacer ian ha sido eliminado');
+    }
 }
